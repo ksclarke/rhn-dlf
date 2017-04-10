@@ -31,13 +31,13 @@ I suppose to be really useful this document could also describe loading the func
 
 ## Building the RHN Download Facilitator
 
-AWS Lambda has a nice Eclipse plugin [that can be used](http://docs.aws.amazon.com/toolkit-for-eclipse/v1/user-guide/lambda-tutorial.html) to build and upload the project. The project can also be built without Eclipse from the command line using Maven. To use Maven, check out the project and run the Maven build command (supplying the required RHN variables):
+AWS Lambda has a nice Eclipse plugin [that can be used](http://docs.aws.amazon.com/toolkit-for-eclipse/v1/user-guide/lambda-tutorial.html) to build and upload the project. The project can also be built without Eclipse from the command line using Maven. To use Maven, check out the project and run the Maven build command (in the process, supplying the required RHN variables):
 
     git clone https://github.com/ksclarke/rhn-dlf.git
     cd rhn-dlf
     mvn -Drhn.username="MY_RHN_USERNAME" -Drhn.password="MY_RHN_PASSWORD" clean install
     
-If you don't want to have to supply the `rhn.username` and `rhn.password` variables on the command line, you can alternatively put them in your [Maven settings](http://maven.apache.org/ref/3.5.0/maven-settings/settings.html) file. Since the test runs against the Red Hat download site (instead of being mocked), the supplied variables need to be valid for the tests to pass. Running the tests locally only sends your login information to the Red Hat download site (not to AWS or any other location). To use the project for real, you'd want to setup your AWS Lambda and API Gateway environments. The run the test in Eclipse using the native JUnit configuration, you'll need to supply the variables as system properties.
+If you don't want to have to supply the `rhn.username` and `rhn.password` variables on the command line each time, you can alternatively put them in your [Maven settings](http://maven.apache.org/ref/3.5.0/maven-settings/settings.html) file. Since the test runs against the Red Hat download site (instead of being mocked), the supplied variables need to be valid and have the right permissions for the tests to pass. Running the tests locally only sends your login information to the Red Hat download site (not to AWS or any other location). To use the project for real, you'd want to setup your AWS Lambda and API Gateway environments. To run the test in Eclipse using the native JUnit tools, you'll need to supply the variables as system properties in your JUnit test configuration.
 
 ## License
 
