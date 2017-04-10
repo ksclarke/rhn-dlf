@@ -10,7 +10,7 @@ To make Red Hat and Packer happy, I've added an additional negotiation layer usi
 
     https://[RHN_USERNAME]:[RHN_PASSWORD]@pi0yu3xvrh.execute-api.us-east-1.amazonaws.com/rhn_dlf
     
-Since Basic authentication passes information in clear text, this should only be used behind HTTPS (which is the default on AWS API Gateway, anyway). There may still be some risk here, but it's acceptable given I just use my free RHN developer account to do the build (and then use real RHEL keys if the build goes anywhere other than my local machine).
+Since Basic authentication passes information in clear text, this should only be used behind HTTPS (which is the default on AWS API Gateway, anyway). There may still be some risk here, but it's acceptable given I just use my free RHN developer account to do the build (and then use real RHEL keys if the build goes anywhere other than my build machine).
 
 Running this Lambda script on AWS costs money, but it doesn't pass the ISO itself through Lambda. It just gives Packer an authenticated download URL via a 302 "Location" response header so the costs are really minimal.
 
